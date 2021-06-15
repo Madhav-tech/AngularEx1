@@ -5,13 +5,16 @@ import { AppComponent } from './app.component';
 import {Greeting} from './../greeting/greeting.component'
 import {EmployeeDetail} from './../employeeDetails/employee.component'
 import { EmployeeList } from 'src/employeeList/emplyeeList.component';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from 'src/pipe/filter.pipe';
+
 
 @NgModule({
   declarations: [
-    AppComponent,Greeting,EmployeeDetail,EmployeeList
+    AppComponent,Greeting,EmployeeDetail,EmployeeList, FilterPipe 
   ],
   imports: [
-    BrowserModule
+    BrowserModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

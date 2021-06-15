@@ -1,15 +1,9 @@
-<table border="1" *ngIf ="employee.length > 0">
-<thead>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-    </tr>
-</thead>
-<tbody>
-    <tr *ngFor ="let emp of employee" >
+<ul *ngIf="employee">
+
+    <img [src]="employee.avatar" alt="Image" />
+        <ul>
+        <li><b>Id:</b>{{employee.id}}</li>
+        <li><b>Email:</b>{{employee.email}}</li>
+        </ul>
     
-    <td *ngIf ="emp.age >10">{{emp.name}}</td>
-    <td *ngIf ="emp.age >10">{{emp.age}}</td>
-</tr>
-</tbody>
-</table>
+</ul>

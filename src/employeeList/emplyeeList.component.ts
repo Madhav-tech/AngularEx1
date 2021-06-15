@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import {EmployeeDetail} from './../employeeDetails/employee.component'
 
 @Component({
     selector:'employee-list',
@@ -46,8 +47,10 @@ export class EmployeeList{
             first_name:"Tracey",
             last_name:"Ramos",
             avatar:"https://reqres.in/img/faces/6-image.jpg"
-        }]
+        }];
         isTrue:boolean = false;
+        selectedEmployee:any;
+        name:string = '';
 
         show(): any{
             console.log('Inside show function');
@@ -57,7 +60,12 @@ export class EmployeeList{
                 this.isTrue = true;
 
           }
-        
+
+
+        test(id:number){
+            const filteredEmployees = this.employees.filter((employee:any) => employee.id ==id);
+            this.selectedEmployee = filteredEmployees[0];
+        }
 }
 
 
