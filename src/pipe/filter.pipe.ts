@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
    */
   
   transform(items: any[], name: string): any[] {
-    console.log(items)
+    //console.log(items)
     if(!items)
         return [];
     if (name != '') {

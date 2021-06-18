@@ -1,8 +1,8 @@
-<div>
-    <div>
+<div style="background-color: rgb(164, 161, 167);padding-top: 0%; height: 100vh">
+    <div style="float: left;width: 50vh;background-color: rgb(226, 210, 243); height: 100vh; padding:10px;">
         <form>
             <input type="text" name="name" [(ngModel)]="name" placeholder="Search by Name" />
-            <ul>
+            <ol>
                 <!-- *All we want is a filter that takes an array as input and returns
                      *a subset of that array based on the term we supply. In Angular,
                      * this way of transforming data to some other form is implemented with Pipes 
@@ -10,35 +10,33 @@
 
                 <!-- results of ngFor is passed to appFilter with argument name -->
                 <li *ngFor="let emp of employees | appFilter: name">
-                    <ul *ngIf="emp">                       
-                        <b>{{emp.first_name}} {{emp.last_name}}</b>
+                    <ul *ngIf="emp">
+                        <li><strong>{{emp.first_name}} {{emp.last_name}}</strong></li>
+                        <li><b>Id:</b>{{emp.id}}</li>
+                        <li><b>Email:</b>{{emp.email}}</li><br><br>
                     </ul>
-                        <employee_detail [employee]="emp"></employee_detail>
-                    
                 </li>
-            </ul>
+            </ol>
         </form>
-        <br><br>
-        <input type="button" value="Show/Hide" id="get-users" (click)="show()">
     </div>
-    <div *ngIf="isTrue">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
+    <div>
+        <input type="button" value="Show/Hide" id="get-users" (click)="show()"><br>
+        <div *ngIf="isTrue" style="float: left;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+
+                    </tr>
+                </thead>
+                <tr *ngFor="let employee of employees">
+                    <td>{{employee.first_name}} {{employee.last_name}}</td>
+                    <td>
+                        <button (click)="test(employee.id)">click here for details</button>
+                    </td>
 
                 </tr>
-            </thead>
-            <tr *ngFor="let employee of employees">
-                <td>{{employee.first_name}} {{employee.last_name}}</td>
-                <td>
-                    <button (click)="test(employee.id)">click here for details</button>
-                </td>
-
-            </tr>
-        </table>
-        <div>
-            <employee_detail [employee]="selectedEmployee"></employee_detail>
+            </table>
         </div>
     </div>
 </div>

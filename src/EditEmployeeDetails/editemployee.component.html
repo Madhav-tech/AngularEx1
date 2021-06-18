@@ -1,0 +1,29 @@
+<div>
+    <h3>Edit Employee Details</h3>  
+    <form novalidate [formGroup]="employeeForm" (ngSubmit)="onSubmit(employeeForm)" >
+        <table border="1">
+            <header > <img [src]="employee.avatar" alt="Image" /></header>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td> <input type="text" formControlName="id" readonly/> </td>
+                </tr>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td><input type="text" formControlName="first_name" /></td>
+                </tr>
+                <tr>
+                    <td> <label>Last Name</label></td>
+                      <td><input type="text" formControlName="last_name"/></td>
+                </tr>
+                <tr>
+                    <td> <label>Email: </label></td>
+                    <td><input type="email" formControlName="email"></td>
+                </tr>
+            </tbody>
+        </table><br>
+        <button type="submit">Update</button>
+    </form>
+
+</div>
+

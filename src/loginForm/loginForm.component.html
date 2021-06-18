@@ -1,0 +1,47 @@
+<div style="background-color: rgb(30, 218, 130); padding: 2px;height:100vh;" >
+<form novalidate (ngSubmit)="save(loginForm)" #loginForm="ngForm">
+    <br>
+    <table>
+        <tbody>
+            <tr>
+                <td><label>User Name</label></td>
+                <td><input type="text" name="userName" required minlength="3" [(ngModel)]="login.username"
+                        #userNameVar="ngModel" /></td>
+
+                <td> <span *ngIf="userNameVar.touched">
+                        <span *ngIf="userNameVar.errors?.required">
+                            Please enter your username.
+                        </span>
+                        <span *ngIf="userNameVar.errors?.minlength">
+                            User name must be longer than 3 characters.
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" name="password" required minlength="5" [(ngModel)]="login.password"  #pwdVar="ngModel" /></td>
+                <td>
+                    <span *ngIf="pwdVar.touched">
+                        <span *ngIf="pwdVar.errors?.required">
+                            Please enter your password.
+                        </span>
+                        <span *ngIf="pwdVar.errors?.minlength">
+                            Password must be greater than 3 characters.
+                        </span>
+
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="reset" /></td>
+                <td><input type="submit" [disabled]="!loginForm.valid" /></td>
+              
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf = "isError" style="color: red;font-weight: bolder; font-size: 18px;">{{error}}</div>
+</form>
+</div>

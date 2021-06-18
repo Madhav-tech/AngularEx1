@@ -1,9 +1,12 @@
-<ul *ngIf="employee">
-
+<div style="background-color: rgb(245, 241, 241);">
+    <h3>Employee Details</h3>
     <img [src]="employee.avatar" alt="Image" />
         <ul>
+        <li>{{employee.first_name}} {{employee.last_name}}</li>
         <li><b>Id:</b>{{employee.id}}</li>
         <li><b>Email:</b>{{employee.email}}</li>
-        </ul>
-    
-</ul>
+        </ul> 
+        <br><br>
+       <button><a [routerLink]="['/editemployee', employee.id]">Edit</a></button> &nbsp;&nbsp;
+        <button (click)=delete() >Delete</button>
+</div>
