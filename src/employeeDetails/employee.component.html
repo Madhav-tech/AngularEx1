@@ -1,12 +1,27 @@
-<div style="background-color: rgb(245, 241, 241);">
-    <h3>Employee Details</h3>
-    <img [src]="employee.avatar" alt="Image" />
-        <ul>
-        <li>{{employee.first_name}} {{employee.last_name}}</li>
-        <li><b>Id:</b>{{employee.id}}</li>
-        <li><b>Email:</b>{{employee.email}}</li>
-        </ul> 
-        <br><br>
-       <button><a [routerLink]="['/editemployee', employee.id]">Edit</a></button> &nbsp;&nbsp;
-        <button (click)=delete() >Delete</button>
+<div class="fluid-container p-3" style="height: 100vh;">
+    <div class="mx-5 mt-5 p-5">
+    <div class="card p-4 bg-info mx-auto" style="max-width: 540px;box-shadow: 4px 4px 8px 8px #a2d419">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img [src]="employee.avatar" class="card-img-top" alt="..." height="250px">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Employee Details</h5>
+              <ul>
+                <li>Name :{{employee.first_name}} {{employee.last_name}}</li>
+                <li>Id :{{employee.id}}</li>
+                <li>Email :{{employee.email}}</li>
+            </ul>
+            <div class="input-group mt-5 col justify-content-center">
+                <div class="m-2"><a class="btn btn-success btn-lg" [routerLink]="['/editemployee', employee.id]">Edit</a></div>
+                <div class="m-2"><button class="btn btn-danger btn-lg" (click)="delete()">Delete</button></div>
+               
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+</div>
 </div>

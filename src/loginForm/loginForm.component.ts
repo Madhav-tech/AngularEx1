@@ -28,6 +28,7 @@ export class LoginForm{
          if(this.login.username == this.userServices.getUserName()){
 
             if(this.login.password == this.userServices.getPassword()){
+                this.userServices.setLogin(true);
                 this.router.navigate(['employeelist']);
             }
             else{

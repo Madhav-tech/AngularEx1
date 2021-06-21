@@ -1,38 +1,49 @@
-<div style="background-color: rgb(164, 161, 167);padding-top: 0%; height: 100vh">
-    <div style="float: left;width: 50vh;background-color: rgb(226, 210, 243); height: 100vh; padding:10px;">
+<div class="fluid-container text-dark row align-items-start"
+    style="padding-top: 0%; height: 100vh">
+    <div class="jumbotrone col mx-4 my-4 rounded" style=" height:100vh;">
         <form>
-            <input type="text" name="name" [(ngModel)]="name" placeholder="Search by Name" />
+            <div class="form-group mt-3">
+                <input class="form-control" type="text" name="name" [(ngModel)]="name" placeholder="Search by Name" />
+            </div>
             <ol>
                 <!-- *All we want is a filter that takes an array as input and returns
                      *a subset of that array based on the term we supply. In Angular,
                      * this way of transforming data to some other form is implemented with Pipes 
                 -->
 
-                <!-- results of ngFor is passed to appFilter with argument name -->
-                <li *ngFor="let emp of employees | appFilter: name">
-                    <ul *ngIf="emp">
-                        <li><strong>{{emp.first_name}} {{emp.last_name}}</strong></li>
-                        <li><b>Id:</b>{{emp.id}}</li>
-                        <li><b>Email:</b>{{emp.email}}</li><br><br>
+                
+                      
+                <div class="card mb-1" style="width: 14rem;" *ngFor="let emp of employees | appFilter: name">
+                    <!-- <img [src]="emp.avatar" class="card-img-top" alt="..." height="100px" > -->
+                    <div class="card-body mb-0">
+                      <strong class="card-title">{{emp.first_name}} {{emp.last_name}}</strong>
+                      <ul *ngIf="emp">
+                        <li>Id:{{emp.id}}</li>
+                        <li>Email:{{emp.email}}</li>
                     </ul>
-                </li>
+                    </div>
+                  </div>
+
             </ol>
         </form>
     </div>
-    <div>
-        <input type="button" value="Show/Hide" id="get-users" (click)="show()"><br>
-        <div *ngIf="isTrue" style="float: left;">
-            <table>
+    <div class="jumbotrone col mx-4 my-4 rounded" style=" background-color: rgb(234, 235, 236); height: 100vh;">
+        <div class="input-group d-grid gap-2 d-md-flex  mb-3 col justify-content-between">
+            <div><input class="btn btn-primary mt-2" type="button" value="Show/Hide" id="get-users" (click)="show()"></div>
+            <div class=" m-2"><a class="btn btn-info" [routerLink]="['/addemployee']">AddEmployee</a></div>
+        </div>
+        <div class="bg-light" *ngIf="isTrue" style="float: left;">
+            <table class="table table-primary table-hover table-responsive">
                 <thead>
                     <tr>
                         <th>Name</th>
-
+                        <th>Details</th>
                     </tr>
                 </thead>
                 <tr *ngFor="let employee of employees">
                     <td>{{employee.first_name}} {{employee.last_name}}</td>
                     <td>
-                        <button (click)="test(employee.id)">click here for details</button>
+                        <button class="btn btn-info" (click)="test(employee.id)">click here for details</button>
                     </td>
 
                 </tr>

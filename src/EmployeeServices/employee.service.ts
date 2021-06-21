@@ -50,10 +50,18 @@ export class EmployeeService{
     public getemployees(): Employee[]{
         return this.employees;
     }
+    public addEmployee(emp:Employee):boolean{
+        let empIndex = this.employees.findIndex((obj => obj.id == emp.id));
+        if(empIndex==-1){
+            this.employees.push(emp)
+            alert("Employee Add Successfully");
+            return true;
+        }
+        return false;
+        
+    }
 
-    // public getEmployeeById(id:number){
-    //     this.employees.filter()
-    // }
+
     public updateEmployee(emp:Employee){
         let empIndex = this.employees.findIndex((obj => obj.id == emp.id));
         this.employees[empIndex].id = emp.id;

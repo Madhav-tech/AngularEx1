@@ -10,23 +10,32 @@ import { FilterPipe } from 'src/pipe/filter.pipe';
 import { LoginForm } from 'src/loginForm/loginForm.component';
 import { RouterModule, Routes } from '@angular/router';
 import { EditEmployee } from 'src/EditEmployeeDetails/editemployee.component';
+import { RegisterUser } from 'src/registerUser/registerUser.component';
+import { EmployeeGuardGuard } from './employee-guard.guard';
+import { AddEmployee } from 'src/AddEmployee/addemployee.component';
+
 
 const routes: Routes = [
-  { path: '', component: LoginForm },
-  { path: 'employeelist', component: EmployeeList },
-  { path: 'employeedetails/:id', component: EmployeeDetail },
-  {path: 'editemployee/:id',component:EditEmployee}
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'login', component: LoginForm}, 
+  {path:'register',component:RegisterUser},
+  { path: 'employeelist', component: EmployeeList, canActivate: [EmployeeGuardGuard]}, 
+  { path: 'employeedetails/:id', component: EmployeeDetail,canActivate: [EmployeeGuardGuard]},
+  {path: 'editemployee/:id',component:EditEmployee,canActivate: [EmployeeGuardGuard]},
+  {path:'addemployee',component:AddEmployee},
+  
+  {path: '**', component: LoginForm},
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,Greeting,EmployeeDetail,EmployeeList, FilterPipe ,LoginForm,EditEmployee
+    AppComponent,Greeting,EmployeeDetail,EmployeeList, FilterPipe ,LoginForm,EditEmployee,RegisterUser,AddEmployee
   ],
   imports: [
     BrowserModule,FormsModule,RouterModule.forRoot(routes),ReactiveFormsModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [EmployeeGuardGuard],
   bootstrap: [AppComponent]
 
   

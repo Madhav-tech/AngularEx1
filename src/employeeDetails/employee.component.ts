@@ -30,6 +30,7 @@ export class EmployeeDetail implements OnInit {
     
     }
     delete():any{
+        console.log(window.alert("Detail will be lost"));
         this.empService.deleteEmployee(this.employee.id);
         this.router.navigate(['employeelist']);
     }
